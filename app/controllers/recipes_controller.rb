@@ -14,8 +14,13 @@ class RecipesController < ApplicationController
   end
 
   def create
-    # raise
     @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
+    @ingredients = []
+    params[:recipe][:ingredients_attributes].values.each do |i|
+      @ingredients << Ingredient.new(description: i[:description], recipe: @recipe)
+    end
+    @recipe.ingredients = @ingredients
     if @recipe.save
       redirect_to recipe_path(@recipe)
     else

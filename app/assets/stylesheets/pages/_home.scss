@@ -1,12 +1,15 @@
 // Specific CSS for your home-page
 .landing-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-image: url('fruit.jpg');
   height: 100vh;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
 &__name {
-  height: 7em;
+  // height: 7em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +17,16 @@
   font-family: "Abril Fatface";
   font-weight: bold;
   }
+&__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+a {
+  text-decoration: none;
+}
+}
+
 
 
 

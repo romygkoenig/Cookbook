@@ -1,2 +1,18 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<div class="container my-5">
+  <div class="card d-flex justify-content-around">
+    <div class="card-body">
+      <h1><%=@recipe.name.capitalize %></h1>
+      <p>Ingredients:</p>
+      <% @recipe.ingredients.each do |ingredient| %>
+      <p><%= ingredient.description.capitalize %></p>
+      <% end %>
+      <p>Description:</p>
+      <p><%=@recipe.description.capitalize%></p>
+      <p>CATEGORY: <%= @recipe.category %></p>
+    </div>
+    <div class="recipe-photo"><%= cl_image_tag @recipe.image, height: 300, width: 400, crop: :fill %>
+
+    </div>
+  </div>
+</div>
+

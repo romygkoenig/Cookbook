@@ -1,27 +1,24 @@
-<h1>Recipes</h1>
-<p><%= link_to "New Recipe", new_recipe_path, class:'card-btn btn-block text-center my-3' %></p>
 <div class="container">
-  <div class="row">
-    <% @recipes.each do |recipe| %>
-    <div class="col-sm-12 col-md-6 col-lg-3">
-      <%= link_to recipe_path(recipe) do %>
-      <div class="card-recipe">
-        <%= cl_image_tag recipe.photo, height: 300, width: 400, crop: :fill, class:'card-recipe-img' %>
-        <div class="card-recipe-infos">
-          <div>
-            <h2><%= recipe.name.capitalize.truncate(40)%></h2>
-            <p><strong> <%= recipe.user.name.capitalize %></strong></p>
+  <h1>Recipes</h1>
+  <p><%= link_to "Add New Recipe", new_recipe_path, class:'card-btn btn-block text-center my-3' %></p>
+    <div class="row">
+      <% @recipes.each do |recipe| %>
+      <div class="col-sm-12 col-md-6 col-lg-3">
+        <%= link_to recipe_path(recipe) do %>
+        <div class="card-recipe">
+          <%= cl_image_tag recipe.image, height: 300, width: 400, crop: :fill, class:'card-recipe-img' %>
+          <div class="card-recipe-infos">
+            <div>
+              <h2><%= recipe.name.capitalize.truncate(40)%></h2>
+              <p><strong> <%= recipe.user.name%></strong></p>
+
+            </div>
+              <%= cl_image_tag recipe.user.photo, class: 'card-recipe-user avatar-bordered' %>
           </div>
-            <%= cl_image_tag recipe.user.photo, class: 'card-recipe-user avatar-bordered' %>
         </div>
+        <%end%>
       </div>
-      <%end%>
+      <% end %>
     </div>
-    <% end %>
-  </div>
 </div>
-
-
-
-
 
