@@ -11,3 +11,16 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "Recipes/index";
+
+body {
+font-family: "Raleway", "Helvetica", "sans-serif";
+font-weight: 500;
+}
+
+a {
+  color: $blue;
+  &:hover{
+    text-decoration: none;
+  }
+}

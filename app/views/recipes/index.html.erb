@@ -1,6 +1,8 @@
 <div class="container">
-  <h1>Recipes</h1>
-  <p><%= link_to "Add New Recipe", new_recipe_path, class:'card-btn btn-block text-center my-3' %></p>
+  <h1 style="text-align:center; font-family: 'Berkshire Swash', cursive; font-size: 55px; margin: 15px;">Recipes</h1>
+  <p class= "d-flex justify-content-center mt-3">
+    <%= link_to "+ Add New Recipe", new_recipe_path, class:'btn btn-outline-primary justify-content-center' %>
+    </p>
     <div class="row">
       <% @recipes.each do |recipe| %>
       <div class="col-sm-12 col-md-6 col-lg-3">
@@ -9,8 +11,14 @@
           <%= cl_image_tag recipe.image, height: 300, width: 400, crop: :fill, class:'card-recipe-img' %>
           <div class="card-recipe-infos">
             <div>
-              <h2><%= recipe.name.capitalize.truncate(40)%></h2>
-              <p><strong> <%= recipe.user.name%></strong></p>
+              <h2 class="text-center"><%= recipe.name.capitalize.truncate(40)%></h2>
+              <div class = "chef-hat d-flex justify-content-around align-items-center">
+                <div class="d-flex">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST6dmQBnd0ytrR59hQJZTxamyk5rul8OjRlLlcTlU0gOs9dhAkYA" alt="chef">
+                  <strong> Chef <%= recipe.user.name%></strong>
+                </div>
+                <span class="d-flex rec-category"><%= recipe.category %></span>
+              </div>
 
             </div>
               <%= cl_image_tag recipe.user.photo, class: 'card-recipe-user avatar-bordered' %>
