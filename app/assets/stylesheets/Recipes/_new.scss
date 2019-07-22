@@ -1,3 +1,10 @@
 .card-body {
   background-color: rgba(255, 255, 255, .93);
 }
+
+.form-bg {
+  background-image: url('fruit.jpg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+}
