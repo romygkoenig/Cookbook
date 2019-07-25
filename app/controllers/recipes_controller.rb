@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @recipes = Recipe.all
+      @recipes = Recipe.all
   end
 
   def show
@@ -17,8 +17,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
     @ingredients = []
-    params[:recipe][:ingredients_attributes].values.each do |i|
-      @ingredients << Ingredient.new(description: i[:description], recipe: @recipe)
+    if !params[:recipe][:ingredients_attributes].nil?
+      params[:recipe][:ingredients_attributes].values.each do |i|
+        @ingredients << Ingredient.new(description: i[:description], recipe: @recipe)
+      end
     end
     @recipe.ingredients = @ingredients
     if @recipe.save
@@ -29,9 +31,11 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
   end
 
   def update
+    @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       redirect_to @recipe, notice: 'Your recipe was successfully updated.'
     else
@@ -42,12 +46,12 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to recipe_path
+    redirect_to recipes_path
   end
 
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :image, :category, ingredientss_attributes: [:id, :description])
+    params.require(:recipe).permit(:name, :description, :image, :category, ingredients_attributes: [:id, :description])
   end
 end

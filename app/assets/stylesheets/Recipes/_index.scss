@@ -18,4 +18,14 @@
   border-radius: 5px;
   padding: 2px 5px;
   font-size: 12px;
+  max-width: 82px;
+}
+
+
+.background-index-image {
+  background-image: url('background2.jpg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  min-height: 100vh
 }

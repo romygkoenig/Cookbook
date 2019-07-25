@@ -1,3 +1,36 @@
-.recipe-photo {
+.recipe-photo img {
   background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  border: 1px solid $blue;
 }
+
+.recipe-title {
+  font-size: 55px;
+  font-family: 'Berkshire Swash', cursive;
+}
+
+.recipe-header {
+  text-align: center;
+  margin: 1px 5px 25px;
+}
+
+
+.recipe-show-bg-image {
+  background-image: url('background3.jpg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.recipe-body {
+  background-color: rgba(255, 255, 255, .93);
+  border-radius: 8px;
+}
+
+.recipe-info-body {
+  width: 50%;
+  text-align: justify;
+}
+

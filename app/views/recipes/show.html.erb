@@ -1,18 +1,34 @@
-<div class="container my-5">
-  <div class="card d-flex justify-content-around">
-    <div class="card-body">
-      <h1><%=@recipe.name.capitalize %></h1>
-      <p>Ingredients:</p>
-      <% @recipe.ingredients.each do |ingredient| %>
-      <p><%= ingredient.description.capitalize %></p>
-      <% end %>
-      <p>Description:</p>
-      <p><%=@recipe.description.capitalize%></p>
-      <p>CATEGORY: <%= @recipe.category %></p>
-    </div>
-    <div class="recipe-photo"><%= cl_image_tag @recipe.image, height: 300, width: 400, crop: :fill %>
-
+<div class="recipe-show-bg-image">
+  <div class="container py-5">
+    <div class="card recipe-body">
+      <div class="div p-3"><%= link_to "◁ Back to Recipes", recipes_path%></div>
+      <span class= "recipe-header">
+        <span class="recipe-title"><%=@recipe.name.capitalize %></span>
+        <% if current_user == @recipe.user %>
+          <%= link_to recipe_path(@recipe), method: :delete do %>
+            <i class="fas fa-trash" style="color:black"></i>
+          <% end %>
+          <%= link_to edit_recipe_path(@recipe) do %>
+            <i class="fas fa-edit" style="color:black"></i>
+          <% end %>
+        <% end %>
+      </span>
+      <div class="d-flex flex-row justify-content-around pb-5">
+        <div class="recipe-info-body">
+          <h3 style="text-decoration:underline;">Ingredients:</h3>
+          <% @recipe.ingredients.each do |ingredient| %>
+          <p><%= ingredient.description.capitalize %></p>
+          <% end %>
+          <h3 style="text-decoration:underline;">Description:</h3>
+          <p><%=@recipe.description.capitalize%></p>
+        </div>
+        <div class="recipe-photo"><%= cl_image_tag @recipe.image, height: 300, width: 400, crop: :fill %>
+          <p class="rec-category mt-3"><%= @recipe.category %></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
 
