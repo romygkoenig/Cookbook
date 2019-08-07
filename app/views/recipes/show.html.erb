@@ -19,7 +19,7 @@
           <% @recipe.ingredients.each do |ingredient| %>
           <p><%= ingredient.description.capitalize %></p>
           <% end %>
-          <h3 style="text-decoration:underline;">Description:</h3>
+          <h3 style="text-decoration:underline;">Directions:</h3>
           <p><%=@recipe.description.capitalize%></p>
         </div>
         <div class="recipe-photo"><%= cl_image_tag @recipe.image, height: 300, width: 400, crop: :fill %>
