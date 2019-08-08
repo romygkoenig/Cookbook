@@ -6,7 +6,7 @@
       </p>
       <div class="row">
         <% @recipes.each do |recipe| %>
-        <div class="col-sm-12 col-md-6 col-lg-3">
+        <div class="col-sm-12 col-md-6 col-lg-4">
           <%= link_to recipe_path(recipe) do %>
           <div class="card-recipe">
             <%= cl_image_tag recipe.image, height: 300, width: 400, crop: :fill, class:'card-recipe-img' %>
@@ -16,7 +16,7 @@
                 <div class = "chef-hat d-flex justify-content-around align-items-center">
                   <div class="d-flex">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST6dmQBnd0ytrR59hQJZTxamyk5rul8OjRlLlcTlU0gOs9dhAkYA" alt="chef">
-                    <strong> Chef <%= recipe.user.name%></strong>
+                    <strong> Chef <%= recipe.user.name.capitalize%></strong>
                   </div>
                   <span class="d-flex rec-category"><%= recipe.category %></span>
                 </div>
