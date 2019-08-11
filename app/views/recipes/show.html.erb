@@ -13,7 +13,7 @@
           <% end %>
         <% end %>
       </span>
-      <div class="d-flex flex-row justify-content-around pb-5">
+      <div class="recipe-display">
         <div class="recipe-info-body">
           <h3 style="text-decoration:underline;">Ingredients:</h3>
           <% @recipe.ingredients.each do |ingredient| %>
@@ -22,8 +22,12 @@
           <h3 style="text-decoration:underline;">Directions:</h3>
           <p><%=@recipe.description.capitalize%></p>
         </div>
-        <div class="recipe-photo"><%= cl_image_tag @recipe.image, height: 300, width: 400, crop: :fill %>
-          <p class="rec-category mt-3"><%= @recipe.category %></p>
+        <div class="recipe-photo d-flex flex-column align-items-center">
+          <%= cl_image_tag @recipe.image %>
+          <div class="d-flex">
+            <span class="rec-category mt-3 mr-2"><%= @recipe.category %></span>
+            <span class="rec-category mt-3">Chef <%= @recipe.user.name.capitalize %></span>
+          </div>
         </div>
       </div>
     </div>

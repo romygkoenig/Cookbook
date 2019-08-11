@@ -1,8 +1,16 @@
+.recipe-photo {
+  width: 50%
+}
+
 .recipe-photo img {
-  background-size: cover;
+  height: 300px;
+  width: 100%;
+  min-width: 280px;
+  max-width: 400px;
   background-position: center;
   border-radius: 5px;
   border: 1px solid $blue;
+  object-fit: cover;
 }
 
 .recipe-title {
@@ -33,4 +41,29 @@
   width: 50%;
   text-align: justify;
 }
+
+
+.recipe-display {
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .recipe-display {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .recipe-info-body {
+    margin-top: 30px;
+    width: 80%;
+  }
+  .recipe-photo {
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
 

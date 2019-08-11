@@ -3,7 +3,17 @@
     <h1 style="text-align:center; font-family: 'Berkshire Swash', cursive; font-size: 55px; padding: 15px;">Recipes</h1>
     <p class= "d-flex justify-content-center mt-3">
       <%= link_to "+ Add New Recipe", new_recipe_path, class:'btn btn-outline-primary justify-content-center' %>
-      </p>
+    </p>
+    <div class= search-box>
+    <%= form_tag recipes_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control-search",
+    placeholder: "Search by recipe or category"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+    </div>
       <div class="row">
         <% @recipes.each do |recipe| %>
         <div class="col-sm-12 col-md-6 col-lg-4">
