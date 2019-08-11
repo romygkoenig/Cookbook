@@ -22,7 +22,7 @@
                   <%= f.input :description, as: :text%>
                 </div>
                 <div class="md-form">
-                  <%= f.input :category, :collection => ["Apetizer", "Soup", "Salad", "Pasta", "Dairy Dishes", "Salmon", "Meat Dishes", "Side Dishes", "Dessert", "Other"], :input_html => {:class => 'selectpicker'}%>
+                  <%= f.input :category, :collection => ["Apetizer", "Soup", "Salad", "Pasta", "Dairy Dishes", "Fish", "Meat Dishes", "Side Dishes", "Dessert", "Other"], :input_html => {:class => 'selectpicker'}%>
                 </div>
                 <div class="md-form">
                   <%= f.input :image, required: true, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: 'Upload a photo' %>
