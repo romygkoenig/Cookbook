@@ -1,4 +1,5 @@
 .card-recipe {
+  position: relative;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -21,7 +22,21 @@
   font-size: 24px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transition: 0.2s ease;
   //position: relative;
+  // &:hover {
+  //   filter: blur(8px);
+  //   -webkit-filter: blur(8px);
+  // }
 }
+
+.card-recipe-user {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  height: 50px;
+  width: 50px;
+}
+
+

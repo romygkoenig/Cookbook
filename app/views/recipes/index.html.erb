@@ -4,15 +4,17 @@
     <p class= "d-flex justify-content-center mt-3">
       <%= link_to "+ Add New Recipe", new_recipe_path, class:'btn btn-outline-primary justify-content-center' %>
     </p>
-    <div class= search-box>
-    <%= form_tag recipes_path, method: :get do %>
-    <%= text_field_tag :query,
-    params[:query],
-    class: "form-control-search",
-    placeholder: "Search by recipe or category"
-    %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% end %>
+    <div class= "search-box">
+        <%= form_tag recipes_path, method: :get do %>
+          <div class="d-flex justify-content-center">
+            <%= text_field_tag :query,
+            params[:query],
+            class: "form-control-search",
+            placeholder: "Search by recipe or category"
+            %>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          </div>
+      <% end %>
     </div>
       <div class="row">
         <% @recipes.each do |recipe| %>
@@ -21,8 +23,12 @@
           <div class="card-recipe">
             <%= cl_image_tag recipe.image, height: 300, width: 400, crop: :fill, class:'card-recipe-img' %>
             <div class="card-recipe-infos">
-              <div>
-                <h2 class="text-center"><%= recipe.name.capitalize.truncate(40)%></h2>
+              <div class="d-flex flex-column justify-content-between" style="height: 78px">
+                <% if recipe.name.length <= 13 %>
+                  <h2 class="text-center"><%= recipe.name.capitalize.truncate(40)%></h2>
+                <% else %>
+                  <h4 class="text-center mt-2"><%= recipe.name.capitalize.truncate(40)%></h4>
+                <% end %>
                 <div class = "chef-hat d-flex justify-content-around align-items-center">
                   <div class="d-flex">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST6dmQBnd0ytrR59hQJZTxamyk5rul8OjRlLlcTlU0gOs9dhAkYA" alt="chef">
@@ -31,8 +37,8 @@
                   <span class="d-flex rec-category"><%= recipe.category %></span>
                 </div>
               </div>
-<!--                 <%= cl_image_tag recipe.user.photo, class: 'card-recipe-user avatar-bordered' %>
- -->            </div>
+             </div>
+            <%= cl_image_tag recipe.user.photo, class: 'card-recipe-user avatar-bordered' %>
           </div>
           <%end%>
         </div>
