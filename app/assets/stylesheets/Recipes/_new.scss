@@ -4,7 +4,13 @@
 
 .form-bg {
   background-image: url('background1.jpg');
-  background-position: center; /* Center the image */
+  // background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
 }
+
+#ingredients{
+    max-height: 200px;
+    overflow: scroll;
+}
+

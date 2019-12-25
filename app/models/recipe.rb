@@ -1,4 +1,5 @@
 class Recipe < ApplicationRecord
+
   belongs_to :user
   has_many :ingredients, inverse_of: :recipe, dependent: :destroy
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
@@ -8,6 +9,10 @@ class Recipe < ApplicationRecord
   validates :ingredients, presence: true
   validates :description, presence: true
   validates :category, presence: true
+  validates :image, presence: true
+
+  validates :category, inclusion: { in: %w(Appetizer Soup Salad Pasta Dairy Dishes Fish Meat Dishes Side Dishes Dessert Other),
+    message: "%{value} is not a valid category" }
 
  include PgSearch
   pg_search_scope :search_by_name_and_category,
@@ -15,4 +20,5 @@ class Recipe < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
 end

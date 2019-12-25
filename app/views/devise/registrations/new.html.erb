@@ -22,16 +22,27 @@
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
 
-          <%= f.input :photo, required: true, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
-          <%= f.input :photo_cache, as: :hidden %>
+          <label class="btn btn-outline-primary">
+            📷 upload a photo
+            <span style="display:none;">
+              <%= f.file_field :photo %>
+            </span>
+          </label>
+          <%= f.hidden_field :photo_cache, id: "file_upload" %>
+
+          <%#= f.input :photo, required: true, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+          <%#= f.input :photo_cache, as: :hidden %>
           <%#= f.input :photo, required: true, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
           <%#= f.input :photo_cache, as: :hidden %>
 
           </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Sign up" %>
-          <%= render "devise/shared/links" %>
+        <div class="form-actions row">
+          <div class="col-5"></div>
+          <div class="col-2">
+            <%= f.button :submit, "Sign up", class:'btn btn-outline-danger' %>
+          </div>
+          <div class="col-5"></div>
         </div>
       <% end %>
    </div>

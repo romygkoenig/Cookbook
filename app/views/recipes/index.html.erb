@@ -1,12 +1,9 @@
 <div class="background-index-image">
   <div class="container">
     <h1 style="text-align:center; font-family: 'Berkshire Swash', cursive; font-size: 55px; padding: 15px;">Recipes</h1>
-    <p class= "d-flex justify-content-center mt-3">
-      <%= link_to "+ Add New Recipe", new_recipe_path, class:'btn btn-outline-primary justify-content-center' %>
-    </p>
     <div class= "search-box">
         <%= form_tag recipes_path, method: :get do %>
-          <div class="d-flex justify-content-center">
+          <div class="d-flex justify-content-center margin-bottom-5">
             <%= text_field_tag :query,
             params[:query],
             class: "form-control-search",
@@ -21,7 +18,11 @@
         <div class="col-sm-12 col-md-6 col-lg-4">
           <%= link_to recipe_path(recipe) do %>
           <div class="card-recipe">
-            <%= cl_image_tag recipe.image, height: 300, width: 400, crop: :fill, class:'card-recipe-img' %>
+            <% if recipe.image.blank? %>
+              <%= image_tag 'cookbook', height: 300, width: 400, crop: :fill, class:'card-recipe-img'%>
+            <% else %>
+              <%= cl_image_tag recipe.image, height: 300, width: 400, crop: :fill, class:'card-recipe-img' %>
+            <% end %>
             <div class="card-recipe-infos">
               <div class="d-flex flex-column justify-content-between" style="height: 78px">
                 <% if recipe.name.length <= 13 %>

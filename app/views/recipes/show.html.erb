@@ -1,17 +1,23 @@
 <div class="recipe-show-bg-image">
   <div class="container py-5">
     <div class="card recipe-body">
-      <div class="div p-3"><%= link_to "◁ Back to Recipes", recipes_path%></div>
       <span class= "recipe-header">
         <span class="recipe-title"><%=@recipe.name.capitalize %></span>
-        <% if current_user == @recipe.user %>
-          <%= link_to recipe_path(@recipe), method: :delete do %>
-            <i class="fas fa-trash" style="color:black"></i>
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-4">
+            <% if current_user == @recipe.user %>
+            <%= link_to recipe_path(@recipe), method: :delete do %>
+              <i class="fas fa-trash" style="color:black"></i>
+            <% end %>
+            <%= link_to edit_recipe_path(@recipe) do %>
+              <i class="fas fa-edit" style="color:black"></i>
+            <% end %>
           <% end %>
-          <%= link_to edit_recipe_path(@recipe) do %>
-            <i class="fas fa-edit" style="color:black"></i>
-          <% end %>
-        <% end %>
+          </div>
+          <div class="col-4"></div>
+        </div>
+
       </span>
       <div class="recipe-display">
         <div class="recipe-info-body">
@@ -23,7 +29,12 @@
           <p><%=@recipe.description.capitalize%></p>
         </div>
         <div class="recipe-photo d-flex flex-column align-items-center">
-          <%= cl_image_tag @recipe.image %>
+
+          <% if @recipe.image.blank? %>
+            <%= image_tag('cookbook')%>
+          <% else %>
+            <%= cl_image_tag @recipe.image %>
+          <% end %>
           <div class="d-flex">
             <span class="rec-category mt-3 mr-2"><%= @recipe.category %></span>
             <span class="rec-category mt-3">Chef <%= @recipe.user.name.capitalize %></span>

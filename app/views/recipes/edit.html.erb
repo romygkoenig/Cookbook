@@ -3,33 +3,38 @@
       <div class="row ">
         <div class="offset-2 col-8">
           <div class="card-body rounded">
-            <h2 style="text-align:center">Create New Recipe</h2>
+            <h2 style="text-align:center">Edit Recipe</h2>
             <%= simple_form_for @recipe do |f| %>
                 <div class="form-inputs col-md-12 ">
                     <div class="md-form">
                       <%= f.input :name, as: :string %>
                     </div>
                     <h5 style="font-size: 16px; line-height: ">Ingredients</h5>
-                <div class="md-form" id='ingredients'>
-                  <%= f.simple_fields_for :ingredients do |ingredient| %>
-                    <%= render 'ingredient_fields', :f => ingredient %>
-                  <% end %>
-                  <div class='links'>
-                    <%= link_to_add_association '+ add ingredient', f, :ingredients, class:"btn btn-outline-primary add-ingredient-link" %>
+                  <div class="md-form" id='ingredients'>
+                    <div class='links'>
+                      <%= link_to_add_association '+ add ingredient', f, :ingredients, class:"btn btn-outline-primary add-ingredient-link" %>
+                    </div>
+                    <%= f.simple_fields_for :ingredients do |ingredient| %>
+                      <%= render 'ingredient_fields', :f => ingredient %>
+                    <% end %>
                   </div>
-                </div>
                 <div class="md-form">
                   <%= f.input :description, as: :text%>
                 </div>
                 <div class="md-form">
-                  <%= f.input :category, :collection => ["Apetizer", "Soup", "Salad", "Pasta", "Dairy Dishes", "Salmon", "Meat Dishes", "Side Dishes", "Dessert", "Other"], :input_html => {:class => 'selectpicker'}%>
+                  <%= f.input :category, :collection => ["Appetizer", "Soup", "Salad", "Pasta", "Dairy Dishes", "Fish", "Meat Dishes", "Side Dishes", "Dessert", "Other"], :input_html => {:class => 'selectpicker'} %>
                 </div>
                 <div class="md-form">
-                  <%= f.input :image, required: true, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: 'Upload a photo' %>
-                  <%= f.input :image_cache, as: :hidden %>
+                  <label class="btn btn-outline-primary">
+                     📷 edit photo
+                    <span style="display:none;">
+                      <%= f.file_field :image %>
+                    </span>
+                  </label>
+                  <%= f.hidden_field :image_cache, id: "file_upload" %>
                 </div>
                 <div class="text-center py-4 mt-3">
-                <%= f.button :submit, "Edit recipe", class:'btn btn-outline-danger' %>
+                <%= f.button :submit, "Edit Recipe", class:'btn btn-outline-danger' %>
               </div>
             <% end %>
           </div>
