@@ -39,7 +39,11 @@
                 </div>
               </div>
              </div>
-            <%= cl_image_tag recipe.user.photo, class: 'card-recipe-user avatar-bordered' %>
+             <% if recipe.user.photo.blank? %>
+               <%= image_tag('chef', class: 'card-recipe-user avatar-bordered') %>
+             <% else %>
+               <%= cl_image_tag recipe.user.photo, class: 'card-recipe-user avatar-bordered' %>
+             <% end %>
           </div>
           <%end%>
         </div>
