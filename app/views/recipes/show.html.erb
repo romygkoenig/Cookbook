@@ -2,7 +2,7 @@
   <div class="container py-5">
     <div class="card recipe-body">
       <span class= "recipe-header">
-        <span class="recipe-title"><%=@recipe.name.capitalize %></span>
+        <span class="recipe-title"><%=@recipe.name.split(" ").map{ |word| word.capitalize }.join(" ") %></span>
         <div class="row">
           <div class="col-4"></div>
           <div class="col-4">
@@ -26,10 +26,9 @@
           <p><%= ingredient.description.capitalize %></p>
           <% end %>
           <h3 style="text-decoration:underline;">Directions:</h3>
-          <p><%=@recipe.description.capitalize%></p>
+          <p><%= simple_format(@recipe.description.capitalize) %></p>
         </div>
         <div class="recipe-photo d-flex flex-column align-items-center">
-
           <% if @recipe.image.blank? %>
             <%= image_tag('cookbook')%>
           <% else %>

@@ -40,7 +40,7 @@
               </div>
              </div>
              <% if recipe.user.photo.blank? %>
-               <%= image_tag('chef', class: 'card-recipe-user avatar-bordered') %>
+               <%= image_tag('chefavatar', class: 'card-recipe-user avatar-bordered') %>
              <% else %>
                <%= cl_image_tag recipe.user.photo, class: 'card-recipe-user avatar-bordered' %>
              <% end %>
