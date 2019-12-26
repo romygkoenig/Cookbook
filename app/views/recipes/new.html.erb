@@ -13,30 +13,26 @@
                   <div class="md-form" id='ingredients'>
                     <div class='links'>
                       <%= link_to_add_association '+ add ingredient', f, :ingredients, class:"btn btn-outline-primary add-ingredient-link" %>
+
+                      <%= f.simple_fields_for :ingredients do |ingredient| %>
+                        <%= render 'ingredient_fields', :f => ingredient %>
+                      <% end %>
                     </div>
-                    <%= f.simple_fields_for :ingredients do |ingredient| %>
-                      <%= render 'ingredient_fields', :f => ingredient %>
-                    <% end %>
                   </div>
-                <div class="md-form">
+                <div class="md-form margin-top-3">
                   <%= f.input :description, as: :text%>
                 </div>
                 <div class="md-form">
                   <%= f.input :category, :collection => ["Appetizer", "Soup", "Salad", "Pasta", "Dairy Dishes", "Fish", "Meat Dishes", "Side Dishes", "Dessert", "Other"], :input_html => {:class => 'selectpicker'} %>
                 </div>
                 <div class="md-form">
-                              <label class="btn btn-outline-primary">
-                                 📷 upload a photo
-                                <span style="display:none;">
-                                  <%= f.file_field :image %>
-                                </span>
-                              </label>
-                              <%= f.hidden_field :image_cache, id: "file_upload" %>
-
-
-
-                    <%#= f.input :image, required: true, input_html: { class: 'hidden' }, label_html: { class: 'upload-photo'}, label: 'Upload a photo' %>
-                    <%#= f.input :image_cache, as: :hidden %>
+                  <label class="btn btn-outline-primary">
+                    📷 upload a photo
+                    <span style="display:none;">
+                      <%= f.file_field :image %>
+                    </span>
+                  </label>
+                  <%= f.hidden_field :image_cache, id: "file_upload" %>
                 </div>
                 <div class="text-center py-4 mt-3">
                 <%= f.button :submit, "Create new recipe", class:'btn btn-outline-danger' %>
