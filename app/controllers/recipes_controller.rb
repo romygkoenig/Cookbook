@@ -11,6 +11,12 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    fav_recipes = []
+    current_user.favorite_recipes.each do |fav|
+      fav_recipes.push(fav.recipe_id)
+    end
+    @favorited = fav_recipes.include?(@recipe.id)
+
   end
 
   def new
@@ -51,6 +57,21 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
     redirect_to recipes_path
+  end
+
+    def favorite
+    type = params[:type]
+    @recipe = Recipe.find(params[:id])
+    if type == "favorite"
+      current_user.favorites << @recipe
+      redirect_back fallback_location: root_path, notice: "You favorited #{@recipe.name}"
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@recipe)
+      redirect_back fallback_location: root_path, notice: "Unfavorited #{@recipe.name}"
+    else
+      # Type missing, nothing happens
+      redirect_back fallback_location: root_path, notice: 'Nothing happened.'
+    end
   end
 
   private

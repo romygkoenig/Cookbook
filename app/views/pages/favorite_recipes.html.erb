@@ -1,18 +1,7 @@
 <div class="background-index-image">
   <div class="container">
-    <h1 style="text-align:center; font-family: 'Berkshire Swash', cursive; font-size: 55px; padding: 15px;">Recipes</h1>
-    <div class= "search-box">
-        <%= form_tag recipes_path, method: :get do %>
-          <div class="d-flex justify-content-center margin-bottom-5">
-            <%= text_field_tag :query,
-            params[:query],
-            class: "form-control-search",
-            placeholder: "Search by recipe, chef, or category"
-            %>
-            <%= submit_tag "Search", class: "btn btn-primary" %>
-          </div>
-      <% end %>
-    </div>
+    <h1 style="text-align:center; font-family: 'Berkshire Swash', cursive; font-size: 55px; padding: 15px;">My Favorites</h1>
+
       <div class="row">
         <% @recipes.each do |recipe| %>
         <div class="col-sm-12 col-md-6 col-lg-4">
