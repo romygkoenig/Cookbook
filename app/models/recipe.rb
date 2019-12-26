@@ -15,8 +15,11 @@ class Recipe < ApplicationRecord
     message: "%{value} is not a valid category" }
 
  include PgSearch
-  pg_search_scope :search_by_name_and_category,
+  pg_search_scope :search_by_name_and_category_and_user,
     against: [ :category, :name],
+    associated_against: {
+      user: [ :name ]
+    },
     using: {
       tsearch: { prefix: true }
     }

@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   def index
    if params[:query].present?
-     @recipes = Recipe.search_by_name_and_category(params[:query])
+     @recipes = Recipe.search_by_name_and_category_and_user(params[:query])
    else
      @recipes = Recipe.all
    end
