@@ -3,9 +3,9 @@ class RecipesController < ApplicationController
 
   def index
    if params[:query].present?
-     @recipes = Recipe.search_by_name_and_category_and_user(params[:query])
+     @recipes = Recipe.search_by_name_and_category_and_user(params[:query]).sort_by {|recipe| recipe.name.downcase}
    else
-     @recipes = Recipe.all
+     @recipes = Recipe.all.sort_by {|recipe| recipe.name.downcase}
    end
   end
 
