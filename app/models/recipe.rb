@@ -15,7 +15,7 @@ class Recipe < ApplicationRecord
   validates :category, presence: true
 
 
-  validates :category, inclusion: { in: %w(Appetizer Soup Salad Pasta Dairy Dishes Fish Meat Dishes Side Dishes Dessert Other),
+  validates :category, inclusion: { in: %w(Appetizer Soup Salad Pasta Dairy\ Dishes Fish Meat\ Dishes Side\ Dishes Dessert Other),
     message: "%{value} is not a valid category" }
 
  include PgSearch
