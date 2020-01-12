@@ -12,11 +12,12 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     fav_recipes = []
-    current_user.favorite_recipes.each do |fav|
-      fav_recipes.push(fav.recipe_id)
+    unless current_user.nil?
+      current_user.favorite_recipes.each do |fav|
+        fav_recipes.push(fav.recipe_id)
+      end
+      @favorited = fav_recipes.include?(@recipe.id)
     end
-    @favorited = fav_recipes.include?(@recipe.id)
-
   end
 
   def new
