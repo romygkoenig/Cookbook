@@ -37,7 +37,7 @@
                 <div class = "chef-hat d-flex justify-content-around align-items-center">
                   <div class="d-flex">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST6dmQBnd0ytrR59hQJZTxamyk5rul8OjRlLlcTlU0gOs9dhAkYA" alt="chef">
-                    <strong> Chef <%= recipe.user.name.capitalize%></strong>
+                    <strong> Chef <%= recipe.user.name.split(" ").map{ |name| name.capitalize}.join(" ")%></strong>
                   </div>
                   <span class="d-flex rec-category"><%= recipe.category %></span>
                 </div>
