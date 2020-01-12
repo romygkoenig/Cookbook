@@ -1,1 +1,3 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+An awesome app for storing your families favorite classic and new recipes!!
+
+Built with love by aunty romers.
