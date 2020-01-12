@@ -32,7 +32,7 @@
 
                     </h2>
                 <% else %>
-                  <h4 class="text-center mt-2"><%= recipe.name.split(" ").map{ |word| word.capitalize }.join(" ").truncate(40)%></h4>
+                  <h4 class="text-center mt-2"><%= recipe.name.split(" ").map{ |word| word.capitalize }.join(" ").truncate(23)%></h4>
                 <% end %>
                 <div class = "chef-hat d-flex justify-content-around align-items-center">
                   <div class="d-flex">

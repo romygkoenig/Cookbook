@@ -64,7 +64,7 @@
             </div>
             <div class="rec-category mt-3">
               <%= link_to recipes_path({query: @recipe.user.name}) do %>
-                Chef <%= @recipe.user.name.capitalize %>
+                Chef <%= recipe.user.name.split(" ").map{ |name| name.capitalize}.join(" ") %>
               <% end %>
             </div>
           </div>
